@@ -1,7 +1,45 @@
-﻿@{
+﻿@using SmartITSolution_Invoice.Models
+@model InvoiceViewModel
+@{
     ViewData["Title"] = "SmartITSolution";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<!-- Form Section -->
+<section>
+<div class="col-md-7">
+	<div class="form-container">
+		<h2 class="text-center mb-4">Smart IT Invoice System</h2>
+		<form asp-action="Index" asp-controller="Home" method="POST" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="mb-3">
+				<label asp-for="InvoiceNo" class="form-label">Invoice No.</label>
+				<input asp-for="InvoiceNo" class="form-control">
+				<span asp-validation-for="InvoiceNo" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Date" class="form-label">Date</label>
+				<input asp-for="Date" class="form-control" type="date">
+				<span asp-validation-for="Date" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="CustomerDetails" class="form-label">Client</label>
+				<input asp-for="CustomerDetails" class="form-control">
+				<span asp-validation-for="CustomerDetails" class="text-danger"></span>
+			</div>
+			
+			<div class="mb-3">
+				<label asp-for="InWord" class="form-label">In Word</label>
+					<input asp-for="InWord" class="form-control">
+					<span asp-validation-for="InWord" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Note" class="form-label">Note If Any</label>
+				<input asp-for="Note" class="form-control">
+				<span asp-validation-for="Note" class="text-danger"></span>
+			</div>
+			
+			<button type="submit" class="btn btn-primary w-100">Generate Invoice</button>
+		</form>
+	</div>
 </div>
+</section>

@@ -29,3 +29,24 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+#brandName {
+    position: relative;
+    display: inline-block;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+    #brandName span {
+        position: absolute;
+        font-size: 22px;
+        font-weight: bold;
+        margin-left: 12px;
+        margin-top: -3px;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(90deg, #2563eb, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
