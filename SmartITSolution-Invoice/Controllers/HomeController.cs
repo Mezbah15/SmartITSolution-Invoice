@@ -25,12 +25,6 @@ public class HomeController : Controller
         if (!ModelState.IsValid)
             return View("Index", model);
 
-        if (string.IsNullOrWhiteSpace(model.InvoiceNo))
-        {
-            model.InvoiceNo =
-                $"INV-{DateTime.Now:yyyyMMddHHmmss}";
-        }
-
         var company = new CompanyInfo
         {
             CompanyName = "SMART IT SOLUTION",

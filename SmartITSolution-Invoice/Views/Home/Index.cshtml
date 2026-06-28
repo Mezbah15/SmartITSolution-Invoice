@@ -24,7 +24,7 @@
                             <label asp-for="InvoiceNo" class="form-label fw-bold">
                                 Invoice Number
                             </label>
-                            <input asp-for="InvoiceNo" class="form-control" />
+                            <input asp-for="InvoiceNo" class="form-control" readonly/>
                             <span asp-validation-for="InvoiceNo" class="text-danger"></span>
                         </div>
 
@@ -89,7 +89,7 @@ Email">
                                     <td>
                                         <input name="Items[0].Rate"
                                                type="number"
-                                               step="100"
+                                               step=""
                                                value=""
                                                class="form-control rate" />
                                     </td>

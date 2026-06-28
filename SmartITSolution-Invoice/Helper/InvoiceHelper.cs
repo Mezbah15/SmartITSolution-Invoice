@@ -75,5 +75,10 @@
 
             return words.Trim();
         }
+
+        public static string GenerateInvoiceNumber()
+        {
+            return $"INV-BD{DateTime.Today:MMyyyy}-{Guid.NewGuid().ToString("N")[..3].ToUpper()}";
+        }
     }
 }

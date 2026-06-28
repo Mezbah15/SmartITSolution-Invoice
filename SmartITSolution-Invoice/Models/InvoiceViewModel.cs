@@ -6,8 +6,7 @@ namespace SmartITSolution_Invoice.Models;
 public class InvoiceViewModel
 {
     [Required]
-    public string InvoiceNo { get; set; } = string.Empty;
-
+    public string InvoiceNo { get; set; } = InvoiceHelper.GenerateInvoiceNumber();
     [Required]
     public DateTime InvoiceDate { get; set; } = DateTime.Today;
 
