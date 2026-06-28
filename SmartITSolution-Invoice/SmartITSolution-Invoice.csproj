@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SmartITSolution_Invoice-96151c42-9c7d-4568-a02a-b55820b3d9de</UserSecretsId>
     <RootNamespace>SmartITSolution_Invoice</RootNamespace>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="QuestPDF" Version="2026.6.0" />
   </ItemGroup>
 
