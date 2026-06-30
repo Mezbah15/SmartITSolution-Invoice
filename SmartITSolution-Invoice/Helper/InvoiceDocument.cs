@@ -77,7 +77,7 @@ public InvoiceDocument(
                             .Bold();
 
                         col.Item()
-                            .Text($"Invoice No: {_invoice.InvoiceNo}");
+                            .Text($"{_invoice.InvoiceNo}");
 
                         col.Item()
                             .Text($"Date: {_invoice.InvoiceDate:dd MMM yyyy}");
