@@ -39,14 +39,13 @@ namespace SmartITSolution_Invoice.Services
                 using var canvas = new Canvas(pdfCanvas, pageSize);
 
                 canvas.SetFont(font)
-                      .SetFontSize(70)
+                      .SetFontSize(60)
                       .SetFontColor(ColorConstants.RED);
 
                 canvas.ShowTextAligned(
                 new Paragraph("PAID")
                     .SetFont(font)
-                    .SetFontSize(60)
-                    .SetFontColor(new DeviceRgb(0, 102, 204)),
+                    .SetFontSize(60).SetFontColor(new DeviceRgb(33, 150, 243)),
                 pageSize.GetWidth() / 2,
                 pageSize.GetHeight() / 2,
                 pageNumber,
