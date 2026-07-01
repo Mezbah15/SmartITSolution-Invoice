@@ -6,12 +6,12 @@ using SmartITSolution_Invoice.Models;
 
 namespace SmartITSolution_Invoice.Services;
 
-public class InvoiceDocument : IDocument
+public class InvoiceGeneratorDocument : IDocument
 {
     private readonly InvoiceViewModel _invoice;
     private readonly CompanyInfo _company;
 
-public InvoiceDocument(
+public InvoiceGeneratorDocument(
     InvoiceViewModel invoice,
     CompanyInfo company)
     {
@@ -85,8 +85,7 @@ public InvoiceDocument(
             });
 
             column.Item()
-                .PaddingVertical(15)
-                .LineHorizontal(1);
+                .PaddingVertical(15);
         });
     }
 
@@ -97,7 +96,7 @@ public InvoiceDocument(
             column.Spacing(25);
 
             column.Item()
-                .Border(1)
+                .Border(1).BorderColor(Colors.BlueGrey.Medium)
                 .Padding(10)
                 .Column(c =>
                 {
@@ -116,7 +115,6 @@ public InvoiceDocument(
             column.Item()
                 .AlignRight()
                 .Width(250)
-                .Border(1)
                 .Padding(20)
                 .Column(total =>
                 {
@@ -133,7 +131,7 @@ public InvoiceDocument(
                 });
 
             column.Item()
-                .Border(1)
+                .Border(1).BorderColor(Colors.BlueGrey.Medium)
                 .Padding(10)
                 .Column(c =>
                 {
@@ -149,7 +147,7 @@ public InvoiceDocument(
             if (!string.IsNullOrWhiteSpace(_invoice.Note))
             {
                 column.Item()
-                    .Border(1)
+                    .Border(1).BorderColor(Colors.BlueGrey.Medium)
                     .Padding(10)
                     .Column(c =>
                     {
@@ -161,20 +159,6 @@ public InvoiceDocument(
                             .Text(_invoice.Note);
                     });
             }
-
-            //column.Item()
-            //    .PaddingTop(30)
-            //    .AlignRight()
-            //    .Width(200)
-            //    .Column(c =>
-            //    {
-            //        c.Item()
-            //            .LineHorizontal(1);
-
-            //        c.Item()
-            //            .AlignCenter()
-            //            .Text("Authorized Signature");
-            //    });
         });
     }
 
@@ -235,9 +219,9 @@ public InvoiceDocument(
     {
         container.Column(column =>
         {
-            column.Item()
-                .PaddingTop(10)
-                .LineHorizontal(1);
+            //column.Item()
+            //    .PaddingTop(10)
+            //    .LineHorizontal(1);
 
             column.Item()
                 .PaddingTop(10 )
@@ -250,7 +234,7 @@ public InvoiceDocument(
                 .Row(row =>
                 {
                     row.RelativeItem()
-                        .Border(1)
+                        .Border(1).BorderColor(Colors.BlueGrey.Medium)
                         .Padding(5)
                         .Column(bank =>
                         {
@@ -269,7 +253,7 @@ public InvoiceDocument(
                         });
 
                     row.RelativeItem()
-                        .Border(1)
+                        .Border(1).BorderColor(Colors.BlueGrey.Medium)
                         .Padding(5)
                         .Column(bank =>
                         {
@@ -300,7 +284,7 @@ public InvoiceDocument(
     {
         return container
             .Background(Colors.Blue.Medium)
-            .Border(1)
+            .Border(1).BorderColor(Colors.BlueGrey.Medium)
             .Padding(5)
             .DefaultTextStyle(x => x.FontColor(Colors.White).Bold());
     }
@@ -308,7 +292,7 @@ public InvoiceDocument(
     private static IContainer DataStyle(IContainer container)
     {
         return container
-            .Border(1)
+            .Border(1).BorderColor(Colors.BlueGrey.Medium)
             .Padding(5);
     }
 }

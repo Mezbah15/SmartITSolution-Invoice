@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SmartITSolution_Invoice.Helper;
+using SmartITSolution_Invoice.Services;
 
 namespace SmartITSolution_Invoice.Models;
 
 public class InvoiceViewModel
 {
     [Required]
-    public string InvoiceNo { get; set; } = InvoiceHelper.GenerateInvoiceNumber();
+    public string InvoiceNo { get; set; } = AmountConverter.GenerateInvoiceNumber();
     [Required]
     public DateTime InvoiceDate { get; set; } = DateTime.Today;
 
@@ -20,7 +20,7 @@ public class InvoiceViewModel
     public decimal TotalAmount => Items.Sum(x => x.Amount);
 
     public string AmountInWords =>
-        InvoiceHelper.ConvertAmountToWords(TotalAmount);
+        AmountConverter.ConvertAmountToWords(TotalAmount);
 }
 
 public class InvoiceItemViewModel

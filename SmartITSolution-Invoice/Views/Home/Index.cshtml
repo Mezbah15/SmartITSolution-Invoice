@@ -4,172 +4,191 @@
     ViewData["Title"] = "SmartITSolution";
 }
 <!-- Form Section -->
-<section>
-    <div class="col-lg-8 mx-auto">
-        <div class="card shadow border-0">
-            <div class="card-header bg-primary text-white">
-                <h3 class="mb-0 text-center">SMART IT INVOICE SYSTEM</h3>
-            </div>
+<section class="container-fluid">
+    <div class="row g-4">
 
-            <div class="card-body">
-                <form asp-action="Invoice"
-                      asp-controller="Home"
-                      method="post" id="invoiceForm">
+        <!-- Left Side (3 Portion) -->
+        <div class="col-lg-9">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0 text-center">SMART IT INVOICE SYSTEM</h3>
+                </div>
 
-                    <div asp-validation-summary="ModelOnly"
-                         class="alert alert-danger"></div>
+                <div class="card-body">
+                    <form asp-action="Invoice"
+                          asp-controller="Home"
+                          method="post"
+                          id="invoiceForm">
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="InvoiceNo" class="form-label fw-bold">
-                                Invoice Number
-                            </label>
-                            <input asp-for="InvoiceNo" class="form-control" readonly/>
-                            <span asp-validation-for="InvoiceNo" class="text-danger"></span>
-                        </div>
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger"></div>
 
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="InvoiceDate" class="form-label fw-bold">
-                                Date
-                            </label>
-                            <input asp-for="InvoiceDate" type="date" class="form-control" />
-                            <span asp-validation-for="InvoiceDate" class="text-danger"></span>
-                        </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="InvoiceNo" class="form-label fw-bold">
+                                    Invoice Number
+                                </label>
+                                <input asp-for="InvoiceNo" class="form-control" readonly />
+                                <span asp-validation-for="InvoiceNo" class="text-danger"></span>
+                            </div>
 
-                    <!-- Client Details -->
-                    <div class="mb-3">
-                        <label asp-for="CustomerDetails" class="form-label fw-bold">
-                            Client Details
-                        </label>
-
-                        <textarea asp-for="CustomerDetails"
-                                  rows="5"
-                                  class="form-control"
-                                  placeholder="Company Name
-Address
-Phone
-Email">
-    </textarea>
-
-                        <span asp-validation-for="CustomerDetails"
-                              class="text-danger"></span>
-                    </div>
-
-                    <!-- Invoice Items -->
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Invoice Items</label>
-
-                        <table class="table table-bordered table-striped" id="itemsTable">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th>Description</th>
-                                    <th width="120">Quantity</th>
-                                    <th width="120">Rate</th>
-                                    <th width="150">Amount</th>
-                                    <th width="80">Remove</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="itemBody">
-                                <tr>
-                                    <td>
-                                        <input name="Items[0].Description"
-                                               class="form-control" />
-                                    </td>
-
-                                    <td>
-                                        <input name="Items[0].Quantity"
-                                               type="number"
-                                               step=""
-                                               value=""
-                                               class="form-control qty" />
-                                    </td>
-
-                                    <td>
-                                        <input name="Items[0].Rate"
-                                               type="number"
-                                               step=""
-                                               value=""
-                                               class="form-control rate" />
-                                    </td>
-
-                                    <td>
-                                        <input class="form-control amount"
-                                               readonly />
-                                    </td>
-
-                                    <td class="text-center">
-                                        <button type="button"
-                                                class="btn btn-danger remove-row">
-                                            X
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button type="button"
-                                class="btn btn-success"
-                                id="addRow">
-                            + Add Item
-                        </button>
-                    </div>
-                    <!-- Total -->
-                    <div class="row mt-3">
-                        <div class="col-md-4 offset-md-8">
-                            <div class="input-group">
-                                <span class="input-group-text fw-bold">
-                                    Grand Total
-                                </span>
-
-                                <input id="grandTotal"
-                                       class="form-control fw-bold text-end"
-                                       readonly />
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="InvoiceDate" class="form-label fw-bold">
+                                    Date
+                                </label>
+                                <input asp-for="InvoiceDate" type="date" class="form-control" />
+                                <span asp-validation-for="InvoiceDate" class="text-danger"></span>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Amount in Words -->
-                    @* <div class="mb-3">
-                        <label asp-for="AmountInWords" class="form-label fw-bold">
-                        In Words :
-                        </label>
-                        @if (Model != null)
-                        {
-                            <p id="inWords" class="form-control" readonly>@Model.AmountInWords</p>
-                        }
-                        else
-                        {
-                        <p class="form-control" readonly></p>
-                        }
-                    </div> *@
-                    <!-- Note -->
-                    <div class="mb-3">
-                        <label asp-for="Note" class="form-label fw-bold">
-                            Note If Any
-                        </label>
+                        <!-- Client Details -->
+                        <div class="mb-3">
+                            <label asp-for="CustomerDetails" class="form-label fw-bold">
+                                Client Details
+                            </label>
 
-                        <textarea asp-for="Note"
-                                  rows="3"
-                                  class="form-control">
-                        </textarea>
+                            <textarea asp-for="CustomerDetails"
+                                      rows="5"
+                                      class="form-control"
+                                      placeholder="Company Name&#10;Address&#10;Phone&#10;Email"></textarea>
 
-                        <span asp-validation-for="Note"
-                              class="text-danger"></span>
-                    </div>
+                            <span asp-validation-for="CustomerDetails"
+                                  class="text-danger"></span>
+                        </div>
 
-                    <button type="submit"
-                            class="btn btn-primary btn-lg w-100" id="cmd">
-                        Generate Invoice
-                    </button>
+                        <!-- Invoice Items -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Invoice Items</label>
 
-                </form>
+                            <table class="table table-bordered table-striped" id="itemsTable">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th width="120">Quantity</th>
+                                        <th width="120">Rate</th>
+                                        <th width="150">Amount</th>
+                                        <th width="80">Remove</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="itemBody">
+                                    <tr>
+                                        <td>
+                                            <input name="Items[0].Description"
+                                                   class="form-control" />
+                                        </td>
+
+                                        <td>
+                                            <input name="Items[0].Quantity"
+                                                   type="number"
+                                                   class="form-control qty" />
+                                        </td>
+
+                                        <td>
+                                            <input name="Items[0].Rate"
+                                                   type="number"
+                                                   class="form-control rate" />
+                                        </td>
+
+                                        <td>
+                                            <input class="form-control amount" readonly />
+                                        </td>
+
+                                        <td class="text-center">
+                                            <button type="button"
+                                                    class="btn btn-danger remove-row">
+                                                X
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <button type="button"
+                                    class="btn btn-success"
+                                    id="addRow">
+                                + Add Item
+                            </button>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="row mt-3">
+                            <div class="col-md-4 offset-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">
+                                        Grand Total
+                                    </span>
+
+                                    <input id="grandTotal"
+                                           class="form-control fw-bold text-end"
+                                           readonly />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Note -->
+                        <div class="mb-3">
+                            <label asp-for="Note" class="form-label fw-bold">
+                                Note If Any
+                            </label>
+
+                            <textarea asp-for="Note"
+                                      rows="3"
+                                      class="form-control"></textarea>
+
+                            <span asp-validation-for="Note"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary btn-lg w-100"
+                                id="cmd">
+                            Generate Invoice
+                        </button>
+
+                    </form>
+                    <div>@TempData["Success2"]</div>
+                </div>
             </div>
         </div>
+
+        <!-- Right Side (1 Portion) -->
+        <div class="col-lg-3">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Upload Existing PDF</h5>
+                </div>
+
+                <div class="card-body">
+                    <form id="uploadForm" asp-action="UploadPdf"
+                          asp-controller="Home"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <div class="mb-3">
+                            <label class="form-label">Select PDF</label>
+
+                            <input id="pdfFile"
+                                   class="form-control"
+                                   type="file"
+                                   name="pdfFile"
+                                   accept=".pdf" />
+                        </div>
+
+                        <button class="btn btn-primary w-100">
+                            Upload &amp; Add PAID
+                        </button>
+                    </form>
+                    <div>@TempData["Success"]</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
+
 @section Scripts {
     <script src="~/js/invoice.js"></script>
+    <script src="~/js/PDFeditorAJAX.js"></script>
 }

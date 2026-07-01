@@ -1,6 +1,6 @@
-﻿namespace SmartITSolution_Invoice.Helper
+﻿namespace SmartITSolution_Invoice.Services
 {
-    public static class InvoiceHelper
+    public static class AmountConverter
     {
         public static string ConvertAmountToWords(decimal amount)
         {
