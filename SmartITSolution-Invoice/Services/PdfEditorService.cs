@@ -50,7 +50,7 @@ namespace SmartITSolution_Invoice.Services
                 pageSize.GetHeight() / 2,
                 pageNumber,
                 TextAlignment.CENTER,
-                VerticalAlignment.BOTTOM,0   
+                VerticalAlignment.TOP,0   
             );
             }
 

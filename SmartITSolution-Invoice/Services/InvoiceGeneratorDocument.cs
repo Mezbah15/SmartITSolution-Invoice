@@ -113,22 +113,51 @@ public InvoiceGeneratorDocument(
                 .Element(ComposeItemsTable);
 
             column.Item()
-                .AlignRight()
-                .Width(250)
-                .Padding(20)
-                .Column(total =>
-                {
-                    total.Item()
-                        .Row(row =>
-                        {
-                            row.RelativeItem()
-                                .Text("Grand Total");
+    .AlignRight()
+    .Width(250)
+    .Padding(20)
+    .Column(total =>
+    {
+        // Grand Total
+        total.Item()
+            .Row(row =>
+            {
+                row.RelativeItem()
+                    .Text("Grand Total");
 
-                            row.ConstantItem(120)
-                                .AlignRight()
-                                .Text($"{_invoice.TotalAmount:N2}");
-                        });
-                });
+                row.ConstantItem(100)
+                    .AlignRight()
+                    .Text(_invoice.TotalAmount.ToString("N2", CultureInfo.InvariantCulture));
+            });
+
+        // Advance Payment (only if greater than zero)
+        if (_invoice.AdvancePayment > 0)
+        {
+            total.Item().Row(row =>
+            {
+                row.RelativeItem()
+                    .Text("Advance Payment");
+
+                row.ConstantItem(100)
+                    .AlignRight()
+                    .Text($"{_invoice.AdvancePayment:N2}");
+            });
+        }
+
+        // Due Amount
+        total.Item()
+            .Row(row =>
+            {
+                row.RelativeItem()
+                    .Text("Due Amount")
+                    .Bold();
+
+                row.ConstantItem(100)
+                    .AlignRight()
+                    .Text(_invoice.DueAmount.ToString("N2", CultureInfo.InvariantCulture))
+                    .Bold();
+            });
+    });
 
             column.Item()
                 .Border(1).BorderColor(Colors.BlueGrey.Medium)
@@ -154,7 +183,6 @@ public InvoiceGeneratorDocument(
                         c.Item()
                             .Text("Note")
                             .Bold();
-
                         c.Item()
                             .Text(_invoice.Note);
                     });
@@ -219,10 +247,6 @@ public InvoiceGeneratorDocument(
     {
         container.Column(column =>
         {
-            //column.Item()
-            //    .PaddingTop(10)
-            //    .LineHorizontal(1);
-
             column.Item()
                 .PaddingTop(10 )
                 .Text("BANKING INFORMATION")

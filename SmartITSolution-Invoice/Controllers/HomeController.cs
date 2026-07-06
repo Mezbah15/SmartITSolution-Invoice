@@ -44,7 +44,6 @@ public class HomeController : Controller
             new InvoiceGeneratorDocument(model, company);
 
         var pdf = document.GeneratePdf();
-        TempData["Success2"] = "Download Successful";
         return File(
             pdf,
             "application/pdf",

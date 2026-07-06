@@ -18,19 +18,17 @@ public class InvoiceViewModel
     public string? Note { get; set; } = string.Empty;
 
     public decimal TotalAmount => Items.Sum(x => x.Amount);
-
+    public decimal? AdvancePayment { get; set; }
+    public decimal DueAmount => TotalAmount - (AdvancePayment ?? 0);
     public string AmountInWords =>
-        AmountConverter.ConvertAmountToWords(TotalAmount);
+        AmountConverter.ConvertAmountToWords(DueAmount);
 }
 
 public class InvoiceItemViewModel
 {
     [Required]
     public string Description { get; set; } = string.Empty;
-
-public decimal Quantity { get; set; }
-
+    public decimal Quantity { get; set; }
     public decimal Rate { get; set; }
-
-    public decimal Amount => Quantity * Rate;
+    public decimal Amount => (Quantity * Rate);
 }

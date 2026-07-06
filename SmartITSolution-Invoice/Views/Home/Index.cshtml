@@ -111,10 +111,12 @@
                             </button>
                         </div>
 
-                        <!-- Total -->
+                        <!-- Totals -->
                         <div class="row mt-3">
                             <div class="col-md-4 offset-md-8">
-                                <div class="input-group">
+
+                                <!-- Grand Total -->
+                                <div class="input-group mb-2">
                                     <span class="input-group-text fw-bold">
                                         Grand Total
                                     </span>
@@ -123,6 +125,31 @@
                                            class="form-control fw-bold text-end"
                                            readonly />
                                 </div>
+
+                                <!-- Advance Payment -->
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text fw-bold">
+                                        Advance
+                                    </span>
+
+                                    <input asp-for="AdvancePayment"
+                                           id="advancePayment"
+                                           type="number"
+                                           class="form-control text-end"
+                                           value="0" />
+                                </div>
+
+                                <!-- Due Amount -->
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">
+                                        Due Amount
+                                    </span>
+
+                                    <input id="dueAmount"
+                                           class="form-control fw-bold text-end"
+                                           readonly />
+                                </div>
+
                             </div>
                         </div>
 
@@ -147,7 +174,6 @@
                         </button>
 
                     </form>
-                    <div>@TempData["Success2"]</div>
                 </div>
             </div>
         </div>
