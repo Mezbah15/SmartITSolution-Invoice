@@ -80,10 +80,15 @@ document.addEventListener('input', function (e) {
         calculateTotal();
     }
 
-    // Recalculate when Advance Payment changes
-    if (e.target.id === "advancePayment") {
+    // Recalculate when Discount changes
+    if (e.target.id === "discount" || e.target.id === "advancePayment" ) {
         calculateTotal();
     }
+
+    // // Recalculate when Advance Payment changes
+    // if (e.target.id === "advancePayment") {
+    //     calculateTotal();
+    // }
 });
 
 function calculateTotal() {
@@ -95,10 +100,13 @@ function calculateTotal() {
         total += parseFloat(input.value) || 0;
     });
 
+    let discount =
+        parseFloat(document.getElementById("discount").value) || 0;
+
     let advance =
         parseFloat(document.getElementById("advancePayment").value) || 0;
 
-    let due = total - advance;
+    let due = total - (discount + advance);
 
     if (due < 0)
         due = 0;

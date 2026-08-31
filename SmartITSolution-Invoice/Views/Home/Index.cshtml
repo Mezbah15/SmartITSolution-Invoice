@@ -125,7 +125,19 @@
                                            class="form-control fw-bold text-end"
                                            readonly />
                                 </div>
+                                <!-- This Discount field added as a new feature 31.08.26-->
+                                <!-- Discount--> 
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text fw-bold">
+                                        Discount
+                                    </span>
 
+                                    <input asp-for="Discount"
+                                           id="discount"
+                                           type="number"
+                                           class="form-control text-end bg-warning-subtle text-warning-emphasis fw-bold"
+                                           value="0" />
+                                </div>
                                 <!-- Advance Payment -->
                                 <div class="input-group mb-2">
                                     <span class="input-group-text fw-bold">
@@ -135,7 +147,7 @@
                                     <input asp-for="AdvancePayment"
                                            id="advancePayment"
                                            type="number"
-                                           class="form-control text-end"
+                                           class="form-control text-end bg-success-subtle text-success fw-bold"
                                            value="0" />
                                 </div>
 

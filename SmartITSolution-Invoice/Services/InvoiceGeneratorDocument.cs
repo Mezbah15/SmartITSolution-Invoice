@@ -129,6 +129,19 @@ public InvoiceGeneratorDocument(
                     .AlignRight()
                     .Text(_invoice.TotalAmount.ToString("N2", CultureInfo.InvariantCulture));
             });
+        // Discount (only if greater than zero)
+        if (_invoice.Discount > 0)
+        {
+            total.Item().Row(row =>
+            {
+                row.RelativeItem()
+                    .Text("Discount");
+
+                row.ConstantItem(100)
+                    .AlignRight()
+                    .Text($"{_invoice.Discount:N2}");
+            });
+        }
 
         // Advance Payment (only if greater than zero)
         if (_invoice.AdvancePayment > 0)
@@ -136,11 +149,11 @@ public InvoiceGeneratorDocument(
             total.Item().Row(row =>
             {
                 row.RelativeItem()
-                    .Text("Advance Payment");
+                    .Text("Advance Payment").FontColor(Colors.Green.Darken2); ;
 
                 row.ConstantItem(100)
                     .AlignRight()
-                    .Text($"{_invoice.AdvancePayment:N2}");
+                    .Text($"{_invoice.AdvancePayment:N2}").FontColor(Colors.Green.Darken2); ;
             });
         }
 

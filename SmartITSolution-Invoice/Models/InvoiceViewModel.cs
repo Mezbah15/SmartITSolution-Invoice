@@ -18,8 +18,9 @@ public class InvoiceViewModel
     public string? Note { get; set; } = string.Empty;
 
     public decimal TotalAmount => Items.Sum(x => x.Amount);
+    public decimal? Discount { get; set; }//New Property Discount added on 31.08.26
     public decimal? AdvancePayment { get; set; }
-    public decimal DueAmount => TotalAmount - (AdvancePayment ?? 0);
+    public decimal DueAmount => TotalAmount - ((AdvancePayment ?? 0) + (Discount ?? 0));  //Calculation updated on 31.08.26
     public string AmountInWords =>
         AmountConverter.ConvertAmountToWords(DueAmount);
 }
