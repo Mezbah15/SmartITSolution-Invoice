@@ -240,9 +240,13 @@
 
                         <!-- Amount In Payment -->
                         <div class="mb-3">
-                            <label asp-for="CustomerDetails" class="form-label fw-bold">
-                                Amount In Payment
-                            </label>
+                            <table class="table table-bordered table-striped" id="itemsTable">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th width="120">Amount In Payment</th>
+                                    </tr>
+                                </thead>
+                            </table>
                             <textarea asp-for="@Model.PaymentACKViewModel.Amount"
                                   rows="1"
                                   class="form-control"
