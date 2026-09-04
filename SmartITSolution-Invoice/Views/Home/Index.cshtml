@@ -8,7 +8,7 @@
     <div class="row g-4">
 
         <!-- Left Side (3 Portion) -->
-        <div class="col-lg-9">
+        <div class="col-lg-7">
             <div class="card shadow border-0">
                 <div class="card-header bg-primary text-white">
                     <h3 class="mb-0 text-center">SMART IT INVOICE SYSTEM</h3>
@@ -58,8 +58,6 @@
 
                         <!-- Invoice Items -->
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Invoice Items</label>
-
                             <table class="table table-bordered table-striped" id="itemsTable">
                                 <thead class="table-primary">
                                     <tr>
@@ -105,7 +103,7 @@
                             </table>
 
                             <button type="button"
-                                    class="btn btn-success"
+                                    class="btn btn-primary"
                                     id="addRow">
                                 + Add Item
                             </button>
@@ -180,7 +178,7 @@
                         </div>
 
                         <button type="submit"
-                                class="btn btn-primary btn-lg w-100"
+                                class="btn btn-outline-primary btn-lg w-100"
                                 id="cmd">
                             Generate Invoice
                         </button>
@@ -191,9 +189,94 @@
         </div>
 
         <!-- Right Side (1 Portion) -->
-        <div class="col-lg-3">
+        <div class="col-lg-5">
+            <!--PAYMENT ACKNOWLEDGEMENT: Instant Payment PDF-->
             <div class="card shadow border-0">
-                <div class="card-header bg-secondary text-white">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0 text-center">PAYMENT ACKNOWLEDGEMENT</h4>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="PaymentAcknowledgement"
+                          asp-controller="Home"
+                          method="post"
+                          id="invoiceForm">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="InvoiceNo" class="form-label fw-bold">
+                                    Invoice Number
+                                </label>
+                                <input asp-for="InvoiceNo" class="form-control" readonly />
+                                <span asp-validation-for="InvoiceNo" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="InvoiceDate" class="form-label fw-bold">
+                                    Date
+                                </label>
+                                <input asp-for="InvoiceDate" type="date" class="form-control" />
+                                <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Client Details -->
+                        <div class="mb-3">
+                            <label asp-for="CustomerDetails" class="form-label fw-bold">
+                                Client Details
+                            </label>
+
+                            <textarea asp-for="CustomerDetails"
+                                      rows="5"
+                                      class="form-control"
+                                      placeholder="Company Name&#10;Address&#10;Phone&#10;Email"></textarea>
+
+                            <span asp-validation-for="CustomerDetails"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <!-- Amount In Payment -->
+                        <div class="mb-3">
+                            <label asp-for="CustomerDetails" class="form-label fw-bold">
+                                Amount In Payment
+                            </label>
+                            <textarea asp-for="@Model.PaymentACKViewModel.Amount"
+                                  rows="1"
+                                  class="form-control"
+                                  placeholder="10000"></textarea>
+
+                            <span asp-validation-for="@Model.PaymentACKViewModel.Amount"
+                              class="text-danger"></span>
+                        </div>
+                        <!-- Note -->
+                        <div class="mb-3">
+                            <label asp-for="Note" class="form-label fw-bold">
+                                Note If Any
+                            </label>
+
+                            <textarea asp-for="Note"
+                                      rows="3"
+                                      class="form-control"></textarea>
+
+                            <span asp-validation-for="Note"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-outline-success btn-lg w-100"
+                                id="cmd">
+                            Generate Acknowledgement
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+            <!--PAID STAMP: Upload Existing PDF-->
+            <div class="card shadow border-0" style="margin-top: 40px">
+                <div class="card-header bg-danger text-white">
                     <h5 class="mb-0">Upload Existing PDF</h5>
                 </div>
 
@@ -213,16 +296,15 @@
                                    accept=".pdf" />
                         </div>
 
-                        <button class="btn btn-primary w-100">
+                        <button class="btn btn-outline-danger w-100">
                             Upload &amp; Add PAID
                         </button>
                     </form>
                     <div>@TempData["Success"]</div>
                 </div>
             </div>
+            </div>
         </div>
-
-    </div>
 </section>
 
 

@@ -50,6 +50,35 @@ public class HomeController : Controller
             $"{model.Items.FirstOrDefault().Description}.pdf");
     }
 
+
+    [HttpPost]
+    public IActionResult PaymentAcknowledgement(InvoiceViewModel model)
+    {
+        //if (!ModelState.IsValid)
+        //    return View("Index", model);
+
+        var company = new CompanyInfo
+        {
+            CompanyName = "SMART IT SOLUTION",
+            Address = "Jigatola, Dhanmondi, Dhaka",
+            Phone = "+8801309445401",
+            Website = "www.smartitsolution.net",
+            LogoPath = Path.Combine(
+                _env.WebRootPath,
+                "images",
+                "logo.jpg")
+        };
+
+        var document =
+            new PaymentACKGeneratorDocument(model, company);
+
+        var pdf = document.GeneratePdf();
+        return File(
+            pdf,
+            "application/pdf",
+            $"Payment{model.PaymentACKViewModel?.Amount}.pdf");
+    }
+
     [HttpPost]
     public async Task<IActionResult> UploadPdf(IFormFile pdfFile)
     {

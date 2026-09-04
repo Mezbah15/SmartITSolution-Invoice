@@ -23,6 +23,8 @@ public class InvoiceViewModel
     public decimal DueAmount => TotalAmount - ((AdvancePayment ?? 0) + (Discount ?? 0));  //Calculation updated on 31.08.26
     public string AmountInWords =>
         AmountConverter.ConvertAmountToWords(DueAmount);
+
+    public PaymentACKViewModel? PaymentACKViewModel { get; set; } // PAYMENT ACKNOWLEDGEMENT
 }
 
 public class InvoiceItemViewModel
