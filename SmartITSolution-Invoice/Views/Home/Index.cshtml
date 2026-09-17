@@ -240,20 +240,45 @@
 
                         <!-- Amount In Payment -->
                         <div class="mb-3">
-                            <table class="table table-bordered table-striped" id="itemsTable">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th width="120">Amount In Payment</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <textarea asp-for="@Model.PaymentACKViewModel.Amount"
-                                  rows="1"
-                                  class="form-control"
-                                  placeholder="10000"></textarea>
+                            <div class="row g-2">
 
-                            <span asp-validation-for="@Model.PaymentACKViewModel.Amount"
-                              class="text-danger"></span>
+                                <!-- Amount -->
+                                <div class="col-md-6 border p-3">
+                                    <label asp-for="PaymentACKViewModel.Amount" class="form-label">
+                                        Amount In Payment
+                                    </label>
+
+                                    <input asp-for="PaymentACKViewModel.Amount"
+                                           type="number"
+                                           class="form-control"
+                                           placeholder="10000"
+                                           min="0"
+                                           step="0.01" />
+
+                                    <span asp-validation-for="PaymentACKViewModel.Amount"
+                                          class="text-danger"></span>
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="col-md-6 border p-3">
+                                    <label asp-for="PaymentACKViewModel.PaymentMethod" class="form-label">
+                                       Select Payment Method
+                                    </label>
+
+                                    <select asp-for="PaymentACKViewModel.PaymentMethod"
+                                            class="form-select">
+                                        <option value=""></option>
+                                        <option value="Bkash">Bkash</option>
+                                        <option value="Nagad">Nagad</option>
+                                        <option value="Bank">Bank</option>
+                                        <option value="Cash">Cash</option>
+                                    </select>
+
+                                    <span asp-validation-for="PaymentACKViewModel.PaymentMethod"
+                                          class="text-danger"></span>
+                                </div>
+
+                            </div>
                         </div>
                         <!-- Note -->
                         <div class="mb-3">

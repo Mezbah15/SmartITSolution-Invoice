@@ -107,24 +107,51 @@ public PaymentACKGeneratorDocument(
                     c.Item()
                         .Text(_invoice.CustomerDetails);
                 });
-         column.Item()
-            .AlignRight()
-            .Width(250)
-            .Padding(20)
-            .Column(total =>
-            {
-                // Amount
-                total.Item()
-                    .Row(row =>
-                    {
-                        row.RelativeItem()
-                            .Text("Amount In Payment").FontColor(Colors.Green.Darken2);
+            column.Item()
+                .AlignRight()
+                .Width(400)
+                .Padding(20)
+                .Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Column(payment =>
+                {
+                    payment.Item()
+                        .Row(row =>
+                        {
+                            // Amount
+                            row.RelativeItem()
+                                .Padding(8)
+                                .Text("Amount In Payment")
+                                .FontColor(Colors.Green.Darken2);
 
-                        row.ConstantItem(100)
-                            .AlignRight()
-                            .Text(_invoice.PaymentACKViewModel?.Amount.ToString("N2", CultureInfo.InvariantCulture)).FontColor(Colors.Green.Darken2);
-                    });
-            });
+                            row.ConstantItem(120)
+                                .Padding(8)
+                                .AlignRight()
+                                .Text(_invoice.PaymentACKViewModel?.Amount
+                                    .ToString("N2", CultureInfo.InvariantCulture))
+                                .FontColor(Colors.Green.Darken2);
+                        });
+
+                    payment.Item()
+                        .LineHorizontal(1)
+                        .LineColor(Colors.Grey.Lighten2);
+
+                    payment.Item()
+                        .Row(row =>
+                        {
+                            // Payment Method
+                            row.RelativeItem()
+                                .Padding(8)
+                                .Text("Payment Method")
+                                .FontColor(Colors.Green.Darken2);
+
+                            row.ConstantItem(120)
+                                .Padding(8)
+                                .AlignRight()
+                                .Text(_invoice.PaymentACKViewModel?.PaymentMethod)
+                                .FontColor(Colors.Green.Darken2);
+                        });
+                });
 
             column.Item()
                 .Border(1).BorderColor(Colors.BlueGrey.Medium)
